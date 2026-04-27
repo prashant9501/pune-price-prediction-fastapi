@@ -1,0 +1,42 @@
+[Unit]
+Description=Pune Property Price Prediction - FastAPI Inference Service
+Documentation=https://github.com/your-repo/pune-price-prediction
+After=network.target
+
+[Service]
+Type=simple
+User=ubuntu
+Group=ubuntu
+WorkingDirectory=/home/ubuntu/pune-price-prediction
+Environment="PATH=/home/ubuntu/pune-price-prediction/.venv/bin:/usr/local/bin:/usr/bin:/bin"
+Environment="PYTHONUNBUFFERED=1"
+Environment="NLTK_DATA=/home/ubuntu/pune-price-prediction/nltk_data"
+
+# Start command (uvicorn must run from project root so `from src.schemas` resolves)
+ExecStart=/home/ubuntu/pune-price-prediction/.venv/bin/uvicorn src.app:app \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --workers 2 \
+    --log-level info
+
+# Restart policy
+Restart=always
+RestartSec=10
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Resource limits
+LimitNOFILE=65536
+MemoryMax=2G
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=pune-price-prediction
+
+[Install]
+WantedBy=multi-user.target

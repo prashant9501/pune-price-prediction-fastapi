@@ -1,0 +1,158 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.egg
+*.egg-info/
+.eggs/
+build/
+dist/
+develop-eggs/
+sdist/
+wheels/
+share/python-wheels/
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# =========================
+# Virtual environments
+# =========================
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# =========================
+# Jupyter / IPython
+# =========================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+profile_default/
+ipython_config.py
+
+# =========================
+# Testing & coverage
+# =========================
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
+
+# =========================
+# Type checkers / linters
+# =========================
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.pyre/
+.pytype/
+.ruff_cache/
+
+# =========================
+# IDE / Editor
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+*.sublime-workspace
+*.sublime-project
+.spyderproject
+.spyproject
+
+# =========================
+# OS junk
+# =========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+
+# =========================
+# Environment / secrets
+# =========================
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.ppk
+secrets.json
+credentials.json
+
+# Local credentials folder (AWS keys, PEM files, etc.) — never commit
+creds/
+credentials/
+.aws/
+
+# =========================
+# Logs
+# =========================
+*.log
+logs/
+*.log.*
+
+# =========================
+# FastAPI / Uvicorn runtime
+# =========================
+*.pid
+*.sock
+
+# =========================
+# NLTK data (downloaded locally)
+# =========================
+nltk_data/
+
+# =========================
+# ML / project-specific
+# =========================
+# Keep small trained artifacts in `model/` checked in, but ignore
+# large or regenerable training outputs:
+mlruns/
+mlartifacts/
+wandb/
+.ipynb_checkpoints/
+*.h5
+*.ckpt
+*.tfevents.*
+
+# Local data dumps / scratch
+data/raw/
+data/interim/
+data/processed/
+*.parquet
+*.feather
+
+# Project archive (do not commit the zipped distribution)
+Pune Price Prediction Project.zip
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.rar
+
+# =========================
+# Frontend (if a build step is added later)
+# =========================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container results-container">
+        <header>
+            <h1>Prediction Complete 🎉</h1>
+            <p>Here is your AI-generated property valuation.</p>
+        </header>
+
+        <div class="result-card">
+            <h2>Predicted Price</h2>
+            <div class="price-highlight" id="predicted-price">₹-- Lakhs</div>
+            
+            <div class="confidence-interval">
+                <h3>95% Confidence Interval</h3>
+                <div class="range-box">
+                    <div class="range-item">
+                        <span>Lower Bound</span>
+                        <strong id="lower-bound">₹-- L</strong>
+                    </div>
+                    <div class="range-divider">to</div>
+                    <div class="range-item">
+                        <span>Upper Bound</span>
+                        <strong id="upper-bound">₹-- L</strong>
+                    </div>
+                </div>
+            </div>
+            <p class="features-text">Analyzed using <span id="features-used">--</span> data dimensions.</p>
+        </div>
+
+        <button onclick="window.location.href='index.html'" class="secondary-btn">Calculate Another Property</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pune Property Predictor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pune Property Price Predictor</h1>
+            <p>Enter the details of the property to get an AI-powered price estimate.</p>
+        </header>
+
+        <form id="property-form">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="property_type">Property Type (BHK)</label>
+                    <input type="number" id="property_type" name="property_type" min="1" max="10" required placeholder="e.g., 2">
+                </div>
+                <div class="form-group">
+                    <label for="area">Carpet Area (Sq.ft)</label>
+                    <input type="number" id="area" name="area" min="100" required placeholder="e.g., 1200">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="sub_area">Sub Area (Location)</label>
+                <input type="text" id="sub_area" name="sub_area" required placeholder="e.g., Kothrud, Baner, Wakad">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Property Description</label>
+                <textarea id="description" name="description" rows="3" placeholder="e.g., Spacious 2 BHK apartment with modular kitchen..."></textarea>
+            </div>
+
+            <h3>Amenities</h3>
+            <div class="amenities-grid">
+                <label class="checkbox-label"><input type="checkbox" name="clubhouse"> Clubhouse</label>
+                <label class="checkbox-label"><input type="checkbox" name="school"> School Nearby</label>
+                <label class="checkbox-label"><input type="checkbox" name="hospital"> Hospital Nearby</label>
+                <label class="checkbox-label"><input type="checkbox" name="mall"> Mall Nearby</label>
+                <label class="checkbox-label"><input type="checkbox" name="park"> Park</label>
+                <label class="checkbox-label"><input type="checkbox" name="pool"> Swimming Pool</label>
+                <label class="checkbox-label"><input type="checkbox" name="gym"> Gym</label>
+            </div>
+
+            <button type="submit" id="submit-btn">Predict Price</button>
+            <div id="loading" class="hidden">🤖 AI is crunching the numbers...</div>
+            <div id="error-msg" class="hidden error"></div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
