@@ -55,8 +55,8 @@ git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git ~/pune-price-prediction
 Make sure the `ubuntu` user owns the entire application directory so the service can write logs and NLTK data.
 
 ```bash
-cd ~/pune-price-prediction
-sudo chown -R ubuntu:ubuntu /home/ubuntu/pune-price-prediction
+cd ~/pune-price-prediction-fastapi
+sudo chown -R ubuntu:ubuntu /home/ubuntu/pune-price-prediction-fastapi
 ```
 
 ### Step 4: Run Setup Script
