@@ -48,7 +48,7 @@ ssh -i your-key.pem ubuntu@YOUR-EC2-PUBLIC-IP
 
 ```bash
 # Clone your repository
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git ~/pune-price-prediction
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git ~/pune-price-prediction-fastapi
 ```
 
 #### Change File Ownership
@@ -222,19 +222,19 @@ sudo journalctl -u pune-price-prediction -n 100 --no-pager
 # 1. Port 8000 already in use
 # 2. Missing model/*.pkl or .sav artifacts
 # 3. NLTK data not found (stopwords / punkt / punkt_tab)
-# 4. File permissions on /home/ubuntu/pune-price-prediction
+# 4. File permissions on /home/ubuntu/pune-price-prediction-fastapi
 # 5. Wrong working directory (must be project root, not src/)
 ```
 
 ### `ModuleNotFoundError: No module named 'src'`
-The systemd service must run uvicorn from the **project root** (`/home/ubuntu/pune-price-prediction`), not from inside `src/`. Verify `WorkingDirectory=` in `pune-price-prediction.service`.
+The systemd service must run uvicorn from the **project root** (`/home/ubuntu/pune-price-prediction-fastapi`), not from inside `src/`. Verify `WorkingDirectory=` in `pune-price-prediction.service`.
 
 ### `LookupError: Resource 'punkt_tab' not found`
 Re-run the NLTK download:
 ```bash
-sudo -u ubuntu NLTK_DATA=/home/ubuntu/pune-price-prediction/nltk_data \
-    /home/ubuntu/pune-price-prediction/.venv/bin/python \
-    -m nltk.downloader -d /home/ubuntu/pune-price-prediction/nltk_data \
+sudo -u ubuntu NLTK_DATA=/home/ubuntu/pune-price-prediction-fastapi/nltk_data \
+    /home/ubuntu/pune-price-prediction-fastapi/.venv/bin/python \
+    -m nltk.downloader -d /home/ubuntu/pune-price-prediction-fastapi/nltk_data \
     stopwords punkt punkt_tab
 sudo systemctl restart pune-price-prediction
 ```
@@ -252,14 +252,14 @@ sudo kill -9 <PID>
 
 ### Fix File Permissions
 ```bash
-sudo chown -R ubuntu:ubuntu /home/ubuntu/pune-price-prediction
+sudo chown -R ubuntu:ubuntu /home/ubuntu/pune-price-prediction-fastapi
 sudo chmod o+x /home/ubuntu
-sudo chmod -R o+rX /home/ubuntu/pune-price-prediction/frontend
+sudo chmod -R o+rX /home/ubuntu/pune-price-prediction-fastapi/frontend
 ```
 
 ### Reinstall Dependencies
 ```bash
-cd ~/pune-price-prediction
+cd ~/pune-price-prediction-fastapi
 source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -269,13 +269,13 @@ pip install -r requirements.txt
 
 ```bash
 # Check frontend files exist
-ls -la ~/pune-price-prediction/frontend/
+ls -la ~/pune-price-prediction-fastapi/frontend/
 
 # Verify NGINX config
 sudo nano /etc/nginx/sites-available/pune-price-prediction
 
 # The location / block should point to:
-# root /home/ubuntu/pune-price-prediction/frontend;
+# root /home/ubuntu/pune-price-prediction-fastapi/frontend;
 
 sudo nginx -t
 sudo systemctl reload nginx
@@ -291,7 +291,7 @@ The frontend's `script.js` may be calling `http://127.0.0.1:8000`. After deployi
 sudo systemctl stop pune-price-prediction
 
 # Pull latest changes
-cd ~/pune-price-prediction
+cd ~/pune-price-prediction-fastapi
 git pull origin main
 
 # Reinstall dependencies if requirements changed (must be inside .venv —
@@ -325,7 +325,7 @@ sudo tail -n 50 /var/log/nginx/pune-price-prediction-error.log
 
 ### Backup Model Artifacts
 ```bash
-tar -czf model-backup-$(date +%Y%m%d).tar.gz ~/pune-price-prediction/model/
+tar -czf model-backup-$(date +%Y%m%d).tar.gz ~/pune-price-prediction-fastapi/model/
 ```
 
 ## Clean Deployment (Starting Fresh)
@@ -338,7 +338,7 @@ sudo rm -f /etc/systemd/system/pune-price-prediction.service
 sudo rm -f /etc/nginx/sites-enabled/pune-price-prediction
 sudo rm -f /etc/nginx/sites-available/pune-price-prediction
 sudo systemctl daemon-reload
-sudo rm -rf ~/pune-price-prediction
+sudo rm -rf ~/pune-price-prediction-fastapi
 
 # Then follow deployment steps from Step 3
 ```

@@ -73,7 +73,7 @@ apt-get "${APT_OPTS[@]}" install \
 print_success "Dependencies installed"
 
 # Application directory
-APP_DIR="/home/ubuntu/pune-price-prediction"
+APP_DIR="/home/ubuntu/pune-price-prediction-fastapi"
 print_info "Setting up application directory: $APP_DIR"
 
 if [ ! -d "$APP_DIR" ]; then

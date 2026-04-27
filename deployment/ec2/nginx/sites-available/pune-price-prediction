@@ -33,7 +33,7 @@ server {
 
     # Serve the static frontend (index.html, results.html, script.js, style.css)
     location / {
-        root /home/ubuntu/pune-price-prediction/frontend;
+        root /home/ubuntu/pune-price-prediction-fastapi/frontend;
         index index.html;
         try_files $uri $uri/ =404;
     }
